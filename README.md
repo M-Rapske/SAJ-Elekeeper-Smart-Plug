@@ -1,6 +1,6 @@
 # SAJ Elekeeper Smart Plug
 
-![SAJ Elekeeper Smart Plug logo](custom_components/saj_elekeeper/brand/logo.png)
+![SAJ Elekeeper Smart Plug logo](custom_components/saj_elekeeper_smart_plug/brand/logo.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-Custom%20Integration-41BDF5.svg)](https://www.home-assistant.io/)
@@ -21,7 +21,7 @@ Elekeeper cloud API.
   energy sensors
 - Login with a **username or email address**
 - Portal selection for Europe, China, and other countries/regions
-- Configurable update interval: 10, 15, 30, or 60 seconds; 2 or 5 minutes
+- Configurable whole-minute update interval from 1 to 1,440 minutes
 - Corrected switch-state handling based on Elekeeper's `deviceSwitch` value
 
 The integration intentionally creates no entities for inverters, batteries,
@@ -39,9 +39,17 @@ wallboxes, or plant-level values.
 
 ### Manual
 
-1. Copy `custom_components/saj_elekeeper` into your Home Assistant configuration
-   directory at `/config/custom_components/saj_elekeeper`.
+1. Copy `custom_components/saj_elekeeper_smart_plug` into your Home Assistant
+   configuration directory at
+   `/config/custom_components/saj_elekeeper_smart_plug`.
 2. Restart Home Assistant.
+
+## Migration from version 0.x
+
+Version 1.0 changes the integration domain from `saj_elekeeper` to
+`saj_elekeeper_smart_plug`. Remove the old integration in Home Assistant, copy
+the new folder, restart Home Assistant, and add **SAJ Elekeeper Smart Plug**
+again. Home Assistant creates new entity IDs because the domain has changed.
 
 ## Configuration
 
@@ -71,7 +79,8 @@ portal for backwards compatibility.
 Home Assistant installs the required dependency automatically:
 [`pysaj-elekeeper`](https://github.com/giovadroid/pysaj-elekeeper).
 
-Local brand images are included in `custom_components/saj_elekeeper/brand/`.
+Local brand images are included in
+`custom_components/saj_elekeeper_smart_plug/brand/`.
 They are displayed by Home Assistant 2026.3 and newer.
 
 ## Translations

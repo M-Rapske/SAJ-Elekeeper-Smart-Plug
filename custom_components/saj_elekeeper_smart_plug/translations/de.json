@@ -1,0 +1,62 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mit SAJ Elekeeper Smart Plug verbinden",
+        "description": "Portal-Region auswählen und die zugehörigen Zugangsdaten eingeben.",
+        "data": {
+          "region": "Portal-Region",
+          "username": "Benutzername oder E-Mail-Adresse",
+          "password": "Passwort"
+        },
+        "data_description": {
+          "region": "Region des Elekeeper-Portals wählen, in dem das Konto angelegt wurde."
+        }
+      },
+      "plant": {
+        "title": "Anlage auswählen",
+        "description": "Dieses Konto enthält mehrere Anlagen.",
+        "data": {"plant_uid": "Anlage"}
+      },
+      "reauth_confirm": {
+        "title": "SAJ Elekeeper Smart Plug erneut verbinden",
+        "description": "Das aktuelle Elekeeper-Passwort eingeben.",
+        "data": {"password": "Passwort"}
+      }
+    },
+    "error": {
+      "invalid_auth": "Benutzername bzw. E-Mail-Adresse oder Passwort wurde abgewiesen.",
+      "cannot_connect": "Elekeeper kann nicht erreicht werden.",
+      "no_plants": "Für dieses Elekeeper-Konto ist keine Anlage verfügbar."
+    },
+    "abort": {
+      "already_configured": "Diese Anlage ist bereits eingerichtet.",
+      "reauth_successful": "Die erneute Anmeldung war erfolgreich."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "smart_plug_power": {"name": "Leistung"},
+      "smart_plug_total_energy": {"name": "Gesamtenergie"},
+      "smart_plug_today_energy": {"name": "Energie heute"},
+      "smart_plug_month_energy": {"name": "Energie diesen Monat"},
+      "smart_plug_voltage": {"name": "Spannung"},
+      "smart_plug_current": {"name": "Strom"},
+      "smart_plug_status": {"name": "Status"}
+    },
+    "switch": {
+      "smart_plug": {"name": "Schalter"}
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Aktualisierungsintervall der Smart Plugs",
+        "description": "Smart-Plug-Daten werden abgefragt; keine Push-Aktualisierungen.",
+        "data": {
+          "scan_interval_minutes": "Aktualisierungsintervall"
+        }
+      }
+    }
+  }
+}
