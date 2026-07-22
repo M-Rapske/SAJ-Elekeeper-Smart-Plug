@@ -32,6 +32,7 @@ from .models import SmartPlugInfo
 
 _LOGGER = logging.getLogger(__name__)
 _AUTH_STATUS_CODES: Final = {401, 403}
+_LOGIN_REQUIRED_API_CODE: Final = 10002
 _SMART_DEVICE_LIST_PATH: Final = "/api/v2/monitor/plantDevice/listSmartDeviceForWeb"
 _SMART_PLUG_DETAIL_PATH: Final = "/api/v2/monitor/device/querySmartDeviceDetail"
 _SMART_PLUG_SWITCH_PATH: Final = "/api/v2/remote/ems/setSwitch"
@@ -39,6 +40,20 @@ _PENDING_SWITCH_STATE_SECONDS: Final = 15
 _DETAIL_TELEMETRY_FIELDS: Final = frozenset(
     {"todayEnergy", "monthEnergy", "voltage", "current"}
 )
+
+
+def _is_login_required_error(error: SajApiError) -> bool:
+    """Return whether Elekeeper asks the client to authenticate again.
+
+    Unlike the HTTP endpoints, the private V2 endpoints signal an expired
+    session in their JSON envelope using error code 10002.  Older versions of
+    the client library do not expose that code as a public attribute, so keep
+    the string fallback for compatibility.
+    """
+    error_code = getattr(error, "code", getattr(error, "error_code", None))
+    return error_code == _LOGIN_REQUIRED_API_CODE or (
+        f"SAJ API error {_LOGIN_REQUIRED_API_CODE}:" in str(error)
+    )
 
 
 def _get_scan_interval(entry: ConfigEntry) -> timedelta:
@@ -114,11 +129,15 @@ class ElekeeperDataUpdateCoordinator(DataUpdateCoordinator[list[SmartPlugInfo]])
             return await self._async_fetch_data()
         except SajAuthError as err:
             raise ConfigEntryAuthFailed("Elekeeper authentication expired") from err
+        except SajApiError as err:
+            if not _is_login_required_error(err):
+                message = f"Error communicating with Elekeeper: {err}"
+                raise UpdateFailed(message) from err
         except httpx.HTTPStatusError as err:
             if err.response.status_code not in _AUTH_STATUS_CODES:
                 message = f"Error communicating with Elekeeper: {err}"
                 raise UpdateFailed(message) from err
-        except (SajApiError, httpx.HTTPError) as err:
+        except httpx.HTTPError as err:
             raise UpdateFailed(f"Error communicating with Elekeeper: {err}") from err
 
         # The portal can invalidate a bearer token independently of its refresh
