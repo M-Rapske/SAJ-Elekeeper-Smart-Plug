@@ -1,0 +1,58 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connecter SAJ Elekeeper Smart Plug",
+        "description": "Sélectionnez la région du portail utilisée par ce compte et saisissez ses identifiants.",
+        "data": {
+          "region": "Région du portail",
+          "username": "Nom d’utilisateur ou adresse e-mail",
+          "password": "Mot de passe"
+        },
+        "data_description": {
+          "region": "Choisissez la région du portail web Elekeeper où le compte a été créé."
+        }
+      },
+      "plant": {
+        "title": "Sélectionner l’installation",
+        "description": "Votre compte contient plusieurs installations.",
+        "data": {"plant_uid": "Installation"}
+      },
+      "reauth_confirm": {
+        "title": "Reconnecter SAJ Elekeeper Smart Plug",
+        "description": "Saisissez le mot de passe Elekeeper actuel.",
+        "data": {"password": "Mot de passe"}
+      }
+    },
+    "error": {
+      "invalid_auth": "Le nom d’utilisateur, l’adresse e-mail ou le mot de passe a été refusé.",
+      "cannot_connect": "Impossible de se connecter à Elekeeper.",
+      "no_plants": "Aucune installation n’est disponible pour ce compte Elekeeper."
+    },
+    "abort": {
+      "already_configured": "Cette installation est déjà configurée.",
+      "reauth_successful": "Réauthentification réussie."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "smart_plug_power": {"name": "Puissance"},
+      "smart_plug_total_energy": {"name": "Énergie totale"},
+      "smart_plug_today_energy": {"name": "Énergie du jour"},
+      "smart_plug_month_energy": {"name": "Énergie ce mois-ci"},
+      "smart_plug_voltage": {"name": "Tension"},
+      "smart_plug_current": {"name": "Courant"},
+      "smart_plug_status": {"name": "État"}
+    },
+    "switch": {"smart_plug": {"name": "Interrupteur"}}
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Intervalle de mise à jour de la prise intelligente",
+        "description": "Les données sont interrogées ; cette API ne fournit pas de mises à jour push.",
+        "data": {"scan_interval": "Intervalle de mise à jour"}
+      }
+    }
+  }
+}

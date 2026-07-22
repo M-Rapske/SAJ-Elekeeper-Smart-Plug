@@ -74,6 +74,13 @@ Home Assistant installs the required dependency automatically:
 Local brand images are included in `custom_components/saj_elekeeper/brand/`.
 They are displayed by Home Assistant 2026.3 and newer.
 
+## Translations
+
+The integration includes full UI translations for English, German, French,
+Spanish, Italian, Dutch, Portuguese (Brazil and Portugal), Polish, Czech,
+Russian, Ukrainian, Turkish, Simplified and Traditional Chinese, Japanese, and
+Korean. Home Assistant falls back to English for other interface languages.
+
 ## Security and support
 
 Credentials are stored only in Home Assistant's configuration storage. Never

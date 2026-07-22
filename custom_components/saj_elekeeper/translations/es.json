@@ -1,0 +1,58 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectar SAJ Elekeeper Smart Plug",
+        "description": "Selecciona la región del portal de esta cuenta e introduce las credenciales.",
+        "data": {
+          "region": "Región del portal",
+          "username": "Nombre de usuario o correo electrónico",
+          "password": "Contraseña"
+        },
+        "data_description": {
+          "region": "Elige la región del portal web Elekeeper donde se creó la cuenta."
+        }
+      },
+      "plant": {
+        "title": "Seleccionar planta",
+        "description": "Tu cuenta tiene más de una planta.",
+        "data": {"plant_uid": "Planta"}
+      },
+      "reauth_confirm": {
+        "title": "Volver a conectar SAJ Elekeeper Smart Plug",
+        "description": "Introduce la contraseña actual de Elekeeper.",
+        "data": {"password": "Contraseña"}
+      }
+    },
+    "error": {
+      "invalid_auth": "Se rechazó el nombre de usuario, el correo electrónico o la contraseña.",
+      "cannot_connect": "No se puede conectar con Elekeeper.",
+      "no_plants": "No hay ninguna planta disponible para esta cuenta de Elekeeper."
+    },
+    "abort": {
+      "already_configured": "Esta planta ya está configurada.",
+      "reauth_successful": "La reautenticación se realizó correctamente."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "smart_plug_power": {"name": "Potencia"},
+      "smart_plug_total_energy": {"name": "Energía total"},
+      "smart_plug_today_energy": {"name": "Energía de hoy"},
+      "smart_plug_month_energy": {"name": "Energía de este mes"},
+      "smart_plug_voltage": {"name": "Voltaje"},
+      "smart_plug_current": {"name": "Corriente"},
+      "smart_plug_status": {"name": "Estado"}
+    },
+    "switch": {"smart_plug": {"name": "Interruptor"}}
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Intervalo de actualización del enchufe inteligente",
+        "description": "Los datos se consultan; esta API no ofrece actualizaciones push.",
+        "data": {"scan_interval": "Intervalo de actualización"}
+      }
+    }
+  }
+}

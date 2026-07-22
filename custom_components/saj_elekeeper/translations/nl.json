@@ -1,0 +1,58 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "SAJ Elekeeper Smart Plug verbinden",
+        "description": "Selecteer de portalregio voor dit account en voer de gegevens in.",
+        "data": {
+          "region": "Portalregio",
+          "username": "Gebruikersnaam of e-mailadres",
+          "password": "Wachtwoord"
+        },
+        "data_description": {
+          "region": "Kies de regio van het Elekeeper-webportaal waar het account is aangemaakt."
+        }
+      },
+      "plant": {
+        "title": "Installatie selecteren",
+        "description": "Je account heeft meer dan één installatie.",
+        "data": {"plant_uid": "Installatie"}
+      },
+      "reauth_confirm": {
+        "title": "SAJ Elekeeper Smart Plug opnieuw verbinden",
+        "description": "Voer het huidige Elekeeper-wachtwoord in.",
+        "data": {"password": "Wachtwoord"}
+      }
+    },
+    "error": {
+      "invalid_auth": "De gebruikersnaam, het e-mailadres of het wachtwoord is geweigerd.",
+      "cannot_connect": "Kan geen verbinding maken met Elekeeper.",
+      "no_plants": "Er is geen installatie beschikbaar voor dit Elekeeper-account."
+    },
+    "abort": {
+      "already_configured": "Deze installatie is al geconfigureerd.",
+      "reauth_successful": "Herauthenticatie is geslaagd."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "smart_plug_power": {"name": "Vermogen"},
+      "smart_plug_total_energy": {"name": "Totale energie"},
+      "smart_plug_today_energy": {"name": "Energie vandaag"},
+      "smart_plug_month_energy": {"name": "Energie deze maand"},
+      "smart_plug_voltage": {"name": "Spanning"},
+      "smart_plug_current": {"name": "Stroom"},
+      "smart_plug_status": {"name": "Status"}
+    },
+    "switch": {"smart_plug": {"name": "Schakelaar"}}
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Bijwerkinterval slimme stekker",
+        "description": "De gegevens worden opgehaald; deze API biedt geen push-updates.",
+        "data": {"scan_interval": "Bijwerkinterval"}
+      }
+    }
+  }
+}
